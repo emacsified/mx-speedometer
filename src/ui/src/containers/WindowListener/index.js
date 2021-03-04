@@ -31,7 +31,6 @@ const WindowListener = props => {
       var speedString = unitSpeed.toString();
 
       if (speedString.length > 3) speedString = '999';
-      console.log(speedString);
 
       for (let i = 0; i < 3; i++) {
         SpeedDisplay[i].innerText = speedString[i] == '&' ? '' : speedString[i];
@@ -40,7 +39,6 @@ const WindowListener = props => {
 
     if (data.gear != undefined) {
       const gear = parseInt(data.gear);
-      console.log(gear);
       if (gear == 0) {
         // GearNum.innerText = 'R';
         // GearDisplay.classList.add('reverseGear');
@@ -54,10 +52,11 @@ const WindowListener = props => {
 
     if (data.rpm != undefined) {
       const rawRpm = parseFloat(data.rpm);
-      console.log(rawRpm);
       // RpmDisplay.style.width = `${(parseFloat(data.rpm) * 100.0).toFixed(2)}%`;
       // GearDisplay.classList.toggle('rpmOverload', rawRpm * 9 > 7.5);
     }
+
+    console.log({ rawRpm, gear, speedString });
   };
 
   return <>{props.children}</>;

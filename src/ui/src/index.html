@@ -96,7 +96,7 @@
     </head>
     <body>
         <div id="speed" class="gauge-container four">
-            <span class="value-text">mph</span>
+            <span class="value-text" id="unit">mph</span>
         </div>
     </body>
 
@@ -114,7 +114,7 @@
 
      window.addEventListener('message', function(event) {
          console.log('received a message')
-          const data = event.data;
+         const data = event.data;
          data.useMetric = false;
          const useMetric = false;
 
@@ -126,11 +126,11 @@
              const useMetricNow = data.useMetric != false;
              if (useMetric != useMetricNow) {
                  useMetric = useMetricNow;
-                 UnitDisplay.innerText = useMetric ? 'KMH' : 'MPH';
+                 document.getElementById('unit').innerText = useMetric ? 'KMH' : 'MPH';
              }
          }
 
-         if (data.rawSpeed != undefined) {
+         if (data.speed != undefined) {
              var multiplier = useMetric ? 3.6 : 2.236936;
              var unitSpeed = Math.floor(parseFloat(data.rawSpeed) * multiplier);
              speedString = unitSpeed.toString();

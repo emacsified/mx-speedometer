@@ -113,29 +113,31 @@
      // speed.setValueAnimated(100, 2);
 
      window.addEventListener('message', function(event) {
+         console.log('received a message')
           const data = event.data;
-    data.useMetric = false;
-    const useMetric = false;
+         data.useMetric = false;
+         const useMetric = false;
 
-    let rawRpm;
-    let gear;
-    let speedString;
+         let rawRpm;
+         let gear;
+         let speedString;
 
-    if (data.useMetric != undefined) {
-      const useMetricNow = data.useMetric != false;
-      if (useMetric != useMetricNow) {
-        useMetric = useMetricNow;
-          UnitDisplay.innerText = useMetric ? 'KMH' : 'MPH';
-      }
-    }
+         if (data.useMetric != undefined) {
+             const useMetricNow = data.useMetric != false;
+             if (useMetric != useMetricNow) {
+                 useMetric = useMetricNow;
+                 UnitDisplay.innerText = useMetric ? 'KMH' : 'MPH';
+             }
+         }
 
-    if (data.rawSpeed != undefined) {
-      var multiplier = useMetric ? 3.6 : 2.236936;
-      var unitSpeed = Math.floor(parseFloat(data.rawSpeed) * multiplier);
-      speedString = unitSpeed.toString();
+         if (data.rawSpeed != undefined) {
+             var multiplier = useMetric ? 3.6 : 2.236936;
+             var unitSpeed = Math.floor(parseFloat(data.rawSpeed) * multiplier);
+             speedString = unitSpeed.toString();
 
-          speed.setValueAnimated(unitSpeed, .1)
-     }
+             speed.setValueAnimated(unitSpeed, .1)
+         }
+
      })
 
          // if (data.gear != undefined) {

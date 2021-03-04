@@ -60,7 +60,13 @@ const WindowListener = props => {
       // GearDisplay.classList.toggle('rpmOverload', rawRpm * 9 > 7.5);
     }
 
-    console.log(JSON.stringify({ rawRpm, gear, speedString }));
+    console.log(
+      JSON.stringify({
+        rawRpm,
+        gear,
+        speed: Math.floor(parseFloat(data.rawSpeed) * 2.236936),
+      }),
+    );
   };
 
   return <>{props.children}</>;

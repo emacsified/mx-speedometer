@@ -15,6 +15,7 @@ const WindowListener = props => {
   const handleEvent = event => {
     const data = event.data;
     data.useMetric = false;
+    const useMetric = data.useMetric;
 
     if (data.useMetric != undefined) {
       const useMetricNow = data.useMetric != false;

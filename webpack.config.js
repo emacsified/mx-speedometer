@@ -19,16 +19,12 @@ const server = {
     new webpack.DefinePlugin({ 'global.GENTLY': false }),
     new RemovePlugin({
       before: {
-        include: [
-          path.resolve(buildPath, 'server')
-        ]
+        include: [path.resolve(buildPath, 'server')],
       },
       watch: {
-        include: [
-          path.resolve(buildPath, 'server')
-        ]
-      }
-    })
+        include: [path.resolve(buildPath, 'server')],
+      },
+    }),
   ],
   optimization: {
     minimize: true,
@@ -38,7 +34,7 @@ const server = {
   },
   output: {
     filename: '[contenthash].server.js',
-    path: path.resolve(buildPath, 'server')
+    path: path.resolve(buildPath, 'server'),
   },
   target: 'node',
 };
@@ -57,16 +53,12 @@ const client = {
   plugins: [
     new RemovePlugin({
       before: {
-        include: [
-          path.resolve(buildPath, 'client')
-        ]
+        include: [path.resolve(buildPath, 'client')],
       },
       watch: {
-        include: [
-          path.resolve(buildPath, 'client')
-        ]
-      }
-    })
+        include: [path.resolve(buildPath, 'client')],
+      },
+    }),
   ],
   optimization: {
     minimize: true,
@@ -80,4 +72,4 @@ const client = {
   },
 };
 
-module.exports = [server, client];
+module.exports = [client];

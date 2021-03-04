@@ -17,6 +17,10 @@ const WindowListener = props => {
     data.useMetric = false;
     const useMetric = false;
 
+    let rawRpm;
+    let gear;
+    let speedString;
+
     if (data.useMetric != undefined) {
       const useMetricNow = data.useMetric != false;
       if (useMetric != useMetricNow) {
@@ -28,7 +32,7 @@ const WindowListener = props => {
     if (data.rawSpeed != undefined) {
       var multiplier = useMetric ? 3.6 : 2.236936;
       var unitSpeed = Math.floor(parseFloat(data.rawSpeed) * multiplier);
-      var speedString = unitSpeed.toString();
+      speedString = unitSpeed.toString();
 
       if (speedString.length > 3) speedString = '999';
 
@@ -38,7 +42,7 @@ const WindowListener = props => {
     }
 
     if (data.gear != undefined) {
-      const gear = parseInt(data.gear);
+      gear = parseInt(data.gear);
       if (gear == 0) {
         // GearNum.innerText = 'R';
         // GearDisplay.classList.add('reverseGear');
@@ -51,7 +55,7 @@ const WindowListener = props => {
     }
 
     if (data.rpm != undefined) {
-      const rawRpm = parseFloat(data.rpm);
+      rawRpm = parseFloat(data.rpm);
       // RpmDisplay.style.width = `${(parseFloat(data.rpm) * 100.0).toFixed(2)}%`;
       // GearDisplay.classList.toggle('rpmOverload', rawRpm * 9 > 7.5);
     }

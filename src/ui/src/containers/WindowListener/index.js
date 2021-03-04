@@ -62,7 +62,7 @@ const WindowListener = props => {
 
     console.log(
       JSON.stringify({
-        rawRpm,
+        rpm: (parseFloat(data.rpm) * 100.0).toFixed(2),
         gear,
         speed: Math.floor(parseFloat(data.rawSpeed) * 2.236936),
       }),

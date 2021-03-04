@@ -42,21 +42,21 @@ const WindowListener = props => {
       const gear = parseInt(data.gear);
       console.log(gear);
       if (gear == 0) {
-        GearNum.innerText = 'R';
-        GearDisplay.classList.add('reverseGear');
-        GearDisplay.classList.remove('normalGear');
+        // GearNum.innerText = 'R';
+        // GearDisplay.classList.add('reverseGear');
+        // GearDisplay.classList.remove('normalGear');
       } else {
-        GearNum.innerText = gear;
-        GearDisplay.classList.remove('reverseGear');
-        GearDisplay.classList.add('normalGear');
+        // GearNum.innerText = gear;
+        // GearDisplay.classList.remove('reverseGear');
+        // GearDisplay.classList.add('normalGear');
       }
     }
 
     if (data.rpm != undefined) {
       const rawRpm = parseFloat(data.rpm);
-      console.log(rpm);
-      RpmDisplay.style.width = `${(parseFloat(data.rpm) * 100.0).toFixed(2)}%`;
-      GearDisplay.classList.toggle('rpmOverload', rawRpm * 9 > 7.5);
+      console.log(rawRpm);
+      // RpmDisplay.style.width = `${(parseFloat(data.rpm) * 100.0).toFixed(2)}%`;
+      // GearDisplay.classList.toggle('rpmOverload', rawRpm * 9 > 7.5);
     }
   };
 

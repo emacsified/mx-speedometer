@@ -33,5 +33,6 @@ setInterval(() => {
 }, 100);
 
 onNet('mx-speedometer:load', () => {
-  SendNuiMessage(JSON.stringify({ type: UIState, action: 'show' }));
+  console.log('LOAD THE SPEEDOMETER');
+  SendNuiMessage(JSON.stringify({ type: 'UIState', action: 'show' }));
 });

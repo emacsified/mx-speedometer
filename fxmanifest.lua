@@ -8,5 +8,6 @@ author 'Ash McBride (emacsified)'
 client_script 'client.lua'
 ui_page "ui/index.html"
 files {
-    "ui/*.*"
+  "ui/index.html"
+  "ui/gauge.js"
 }

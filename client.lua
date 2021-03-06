@@ -1,7 +1,8 @@
 Citizen.CreateThread(function()
 local player = PlayerPedId()
   Citizen.Wait(1000)
-while true do
+  while true do
+    Citizen.Wait(0)
   if IsPedInAnyVehicle(player, false) then
     local vehicle = GetVehiclePedIsIn(player, false);
     -- If driving, and the engine is running

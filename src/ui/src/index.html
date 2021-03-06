@@ -202,16 +202,12 @@
      )
      var altitude = Gauge(
          document.getElementById("altitude"), {
-             max: 1200,
+             max: 800,
              dialStartAngle: 130,
              dialEndAngle: 50,
              value: 0,
              label: function(label) {
-                 if (label > 1200) {
-                     return '>1200';
-                 } else {
-                     return label.toFixed(0)
-                 }
+                 return label.toFixed(0)
              }
          }
      )
@@ -226,7 +222,7 @@
 
          if (event.data.action == 'hide') {
              if (speed.getValue() !== 0) {
-                 rpm.setValueAnimated(0,0)
+                 // rpm.setValueAnimated(0,0)
                  speed.setValueAnimated(0,0)
              }
              document.getElementById('body').classList.add('hidden')
@@ -234,6 +230,20 @@
              document.getElementById('body').classList.remove('hidden')
              console.log(JSON.stringify(event.data))
              if (!data.isAirborne) {
+                 // only do gears if we aren't airborne - doesnt really work for planes/helis
+                 if (data.gear != undefined) {
+                 gear = parseInt(data.gear);
+                 if (gear == 0 && data.speed != 0) {
+                     // zeroth gear and moving, must be in reverse
+                     document.getElementById('gear').innerText = 'R';
+                 } else if (data.speed == 0) {
+                     // zeroth gear and not moving, in Neutral
+                     document.getElementById('gear').innerText = 'N'
+                 } else {
+                     // not zeroth gear and moving - in gear.
+                     document.getElementById('gear').innerText  = gear
+                 }
+                 }
                  document.getElementById('altitude').classList.add('hidden')
              } else {
                  document.getElementById('altitude').classList.remove('hidden')
@@ -260,19 +270,7 @@
              speed.setValueAnimated(unitSpeed, .1)
          }
 
-             if (data.gear != undefined) {
-                 gear = parseInt(data.gear);
-                 if (gear == 0 && data.speed != 0) {
-                     // zeroth gear and moving, must be in reverse
-                     document.getElementById('gear').innerText = 'R';
-                 } else if (data.speed == 0) {
-                     // zeroth gear and not moving, in Neutral
-                     document.getElementById('gear').innerText = 'N'
-                 } else {
-                     // not zeroth gear and moving - in gear.
-                     document.getElementById('gear').innerText  = gear
-                 }
-             }
+
 
              // if (data.rpm != undefined) {
              //          rawRpm = parseFloat(data.rpm);

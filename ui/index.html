@@ -153,7 +153,7 @@
 
         </style>
     </head>
-    <body id="body" class="" >
+    <body id="body" style="display: none;" >
         <div id="speed" class="gauge-container">
             <span class="value-text" style="font-weight: 500" id="">MPH</span>
         </div>
@@ -171,6 +171,8 @@
     </body>
 
     <script type="text/javascript">
+     $('#body').hide()
+     $('#body').removeClass('hidden')
      var speed = Gauge(
          document.getElementById("speed"), {
              max: 220,

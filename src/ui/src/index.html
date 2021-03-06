@@ -145,8 +145,9 @@
          #altitude {
              position: absolute;
              left: 105%;
-             bottom: -28%;
+             bottom: -2%;
              width: 100px
+             height: 100px;
          }
 
         </style>
@@ -220,6 +221,7 @@
              document.getElementById('body').classList.add('hidden')
          } else {
              document.getElementById('body').classList.remove('hidden')
+             console.log(JSON.stringify(event.data))
              if (!data.isAirborne) {
                  document.getElementById('altitude').classList.add('hidden')
              } else {

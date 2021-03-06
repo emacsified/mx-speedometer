@@ -2,7 +2,7 @@ Citizen.CreateThread(function()
 local player = PlayerPedId()
 print("At least it ran slightly?")
 while true do
-  Citizen.wait(0)
+  Citizen.Wait(0)
   print("starting loop")
   if IsPedInAnyVehicle(player, false) then
     print("is in a vehicle")

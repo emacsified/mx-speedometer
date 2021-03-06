@@ -14,22 +14,22 @@ while true do
       local speed = GetEntitySpeed(vehicle)
       local fuel = GetVehicleFuelLevel(vehicle)
       local isAirborne = IsPedInAnyPlane(player) or IsPedInAnyHeli(player)
-      SendNuiMessage({
+      SendNuiMessage(json.encode({
           action = "show",
           gear = gear,
           speed = speed,
           fuel = fuel,
-          isAirborne = isAirborne})
+          isAirborne = isAirborne}))
       Citizen.Wait(100)
     else
       print("in car, not driving")
-      SendNuiMessage({
+      SendNuiMessage(json.encode({
           action = "hide"
-      })
+      }))
       Citizen.Wait(500)
     end
   else
-    SendNuiMessage({type = "UIState", action = "hide"})
+    SendNuiMessage(json.encode({type = "UIState", action = "hide"}))
     print("not in a car")
     Citizen.Wait(500)
   end

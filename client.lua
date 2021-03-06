@@ -14,12 +14,20 @@ while true do
       local speed = GetEntitySpeed(vehicle)
       local fuel = GetVehicleFuelLevel(vehicle)
       local isAirborne = IsPedInAnyPlane(player) or IsPedInAnyHeli(player)
+      local altitude
+      if isAirborne then
+        altitude = GetEntityHeightAboveGround(vehicle)
+      else
+        altitude = nil
+      end
       SendNuiMessage(json.encode({
           action = "show",
           gear = gear,
           speed = speed,
           fuel = fuel,
-          isAirborne = isAirborne}))
+          isAirborne = isAirborne
+          altitude = altitude
+      }))
       Citizen.Wait(100)
     else
       print("in car, not driving")

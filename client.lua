@@ -1,6 +1,6 @@
+Citizen.CreateThread(function()
 local player = PlayerPedId()
 print("At least it ran slightly?")
-Citizen.CreateThread(function()
     while true do
       print("starting loop")
       if IsPedInAnyVehicle(player, false) then
@@ -14,16 +14,16 @@ Citizen.CreateThread(function()
           local fuel = GetVehicleFuelLevel(vehicle)
           local isAirborne = IsPedInAnyPlane(player) or IsPedInAnyHeli(player)
           SendNuiMessage({type = 'UIState', action = 'show', gear = gear, speed = speed, fuel = fuel, isAirborne = isAirborne})
-          Wait(100)
+          Citizen.Wait(100)
         else
           SendNuiMessage({type = "UIState", action = "hide"})
           print("in car, not driving")
-          Wait(500)
+          Citizen.Wait(500)
         end
       else
         SendNuiMessage({type = "UIState", action = "hide"})
         print("not in a car")
-        Wait(500)
+        Citizen.Wait(500)
       end
 
     end

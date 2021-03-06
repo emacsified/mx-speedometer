@@ -8,7 +8,7 @@ while true do
     print("is in a vehicle")
     local vehicle = GetVehiclePedIsIn(player, false);
     -- If driving, and the engine is running
-    if (GetPedInVehicleSeat(vehicle, -1) == player and GetIsVehicleEngineRunning(vehicle) == true) then
+    if (GetPedInVehicleSeat(vehicle, -1) == player and GetIsVehicleEngineRunning(vehicle)) then
       print("is driving")
       local gear = GetVehicleCurrentGear(vehicle)
       local speed = GetEntitySpeed(vehicle)

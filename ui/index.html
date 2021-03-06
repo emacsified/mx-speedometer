@@ -6,6 +6,8 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>FiveM Boilerplate</title>
         <script src="gauge.js"></script>
+        <script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+
 
         <style>
          body {
@@ -228,9 +230,9 @@
                  // rpm.setValueAnimated(0,0)
                  speed.setValueAnimated(0,0)
              }
-             document.getElementById('body').classList.add('hidden')
+             $('#body').hide()
          } else {
-             document.getElementById('body').classList.remove('hidden')
+             $('#body').show()
              if (!data.isAirborne) {
                  // only do gears if we aren't airborne - doesnt really work for planes/helis
                  if (data.gear != undefined) {
@@ -246,9 +248,9 @@
                      document.getElementById('gear').innerText  = gear
                  }
                  }
-                 document.getElementById('altitude').classList.add('hidden')
+                 $('#altitude').hide()
              } else {
-                 document.getElementById('altitude').classList.remove('hidden')
+                 $('#altitude').show()
                  altitude.setValueAnimated(data.altitude.toFixed(0), .1)
              }
 

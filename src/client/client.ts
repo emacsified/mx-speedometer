@@ -14,11 +14,14 @@ setInterval(() => {
       const gear = GetVehicleCurrentGear(currentVehicle);
       const speed = GetEntitySpeed(currentVehicle);
       const fuel = GetVehicleFuelLevel(currentVehicle);
+      const isAirborne = IsPedInAnyPlane(player);
       const message = {
         rpm,
         gear,
         speed,
         fuel,
+        isAirborne,
+        altitude: isAirborne ? GetEntityHeightAboveGround(player) : null,
       };
       SendNuiMessage(JSON.stringify({ type: 'UIState', action: 'show', ...message }));
     } else {

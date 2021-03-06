@@ -1,5 +1,5 @@
 local player = PlayerPedId()
-
+print("At least it ran slightly?")
 Citizen.CreateThread(function()
     while true do
       print("starting loop")

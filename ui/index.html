@@ -10,6 +10,23 @@
         <style>
          body {
              font-family: Helvetica, sans-serif;
+             position: absolute;
+             bottom: 0;
+             left: 15%;
+         }
+
+         .hidden {
+             visibility: hidden;
+         }
+
+         .visible {
+             visibility: visible;
+         }
+
+         .fuel-tank {
+             position: absolute;
+             bottom: 20%;
+             right: -2%;
          }
 
          /* ------ Default Style ---------- */
@@ -34,7 +51,6 @@
              padding: 5px 10px;
          }
          .gauge-container > .gauge .dial {
-             stroke: #334455;
              stroke-width: 2;
              fill: rgba(0,0,0,0);
          }
@@ -43,11 +59,11 @@
              stroke-width: 2;
              fill: rgba(0,0,0,0);
          }
-         .gauge-container > .gauge .value-text {
+         .value-text {
              fill: rgb(47, 227, 255);
              font-family: sans-serif;
-             font-weight: bold;
-             font-size: 0.8em;
+             font-weight: 900;
+             font-size: 1.2em;
          }
 
 
@@ -68,106 +84,214 @@
 
 
          /* ----- Alternate Style ----- */
-         .gauge-container.four > .gauge .dial {
-             stroke: #334455;
+         .gauge-container > .gauge .dial {
              stroke-width: 10;
+             stroke: rgba(144,145,157,0.6);
          }
-         .gauge-container.four > .gauge .value {
-             stroke: #F32450;
+         #rpm > .gauge .dial {
+             stroke-width: 0 !important;
+         }
+         .gauge-container > .gauge .value {
+             stroke: #fff;
              stroke-dasharray: none;
              stroke-width: 10;
          }
-         .gauge-container.four > .gauge .value-text {
-             fill: #F32450;
-             transform: translate3d(26%, 20%, 0);
+         .gauge-container > .gauge .value-text {
+             fill: #fff;
+             transform: translate3d(0%, -5%, 0);
              display: inline-block;
          }
-         .gauge-container.four .value-text {
-             color: #F32450;
-             font-weight: 100;
+         .gauge-container .value-text {
+             color: #fff;
+             font-weight: 900;
              position: absolute;
-             bottom: 18%;
-             right: 10%;
+             bottom: 32%;
+             right: 38%;
              display: inline-block;
+         }
+         #rpm {
+             position: absolute !important;
          }
 
+         #rpm > .gauge .value-text {
+             visibility: hidden;
+         }
+         #rpm > .gauge .value {
+             stroke-width: 1.5;
+             stroke: rgb(215,10,10);
+         }
+
+         #gear {
+             color: white;
+             position: absolute;
+             bottom: 12%;
+             font-size: 1.4rem;
+             left:  55%;
+             font-family: sans-serif;
+             font-weight: 900;
+             font-size: 1.2em
+         }
+
+         #fuel {
+             position: absolute;
+             bottom: 0%;
+             left: 60%;
+             height: 80px;
+             width: 80px;
+
+         }
+
+         #altitude {
+             position: absolute;
+             left: 89%;
+             bottom: 4%;
+             width: 100px;
+             height: 100px;
+         }
 
         </style>
     </head>
-    <body>
-        <div id="speed" class="gauge-container four">
-            <span class="value-text">mph</span>
+    <body id="body" class="" >
+        <div id="speed" class="gauge-container">
+            <span class="value-text" style="font-weight: 500" id="">MPH</span>
         </div>
+         <div id="rpm" class="gauge-container">
+         </div>
+         <span id="gear"></span>
+         <div id="fuel" class="gauge-container"></div>
+    <svg class="fuel-tank" width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                 <path d="M20.7273 6.54545H19.6364V3.27273C19.6364 2.9834 19.5214 2.70592 19.3168 2.50134C19.1123 2.29675 18.8348 2.18182 18.5455 2.18182C18.2561 2.18182 17.9787 2.29675 17.7741 2.50134C17.5695 2.70592 17.4545 2.9834 17.4545 3.27273V6.54545C17.4545 7.12411 17.6844 7.67906 18.0936 8.08823C18.5028 8.4974 19.0577 8.72727 19.6364 8.72727V18C19.6364 18.1447 19.5789 18.2834 19.4766 18.3857C19.3743 18.488 19.2356 18.5455 19.0909 18.5455C18.9462 18.5455 18.8075 18.488 18.7052 18.3857C18.6029 18.2834 18.5455 18.1447 18.5455 18V14.1818C18.5455 13.3138 18.2007 12.4814 17.5869 11.8677C16.9731 11.2539 16.1407 10.9091 15.2727 10.9091V4.36364C15.2727 3.78498 15.0429 3.23003 14.6337 2.82086C14.2245 2.41169 13.6696 2.18182 13.0909 2.18182H4.36364C3.78498 2.18182 3.23003 2.41169 2.82086 2.82086C2.41169 3.23003 2.18182 3.78498 2.18182 4.36364V19.6364C2.18182 20.215 2.41169 20.77 2.82086 21.1791C3.23003 21.5883 3.78498 21.8182 4.36364 21.8182H13.0909C13.6696 21.8182 14.2245 21.5883 14.6337 21.1791C15.0429 20.77 15.2727 20.215 15.2727 19.6364V13.0909C15.5621 13.0909 15.8395 13.2058 16.0441 13.4104C16.2487 13.615 16.3636 13.8925 16.3636 14.1818V18C16.3636 18.7233 16.651 19.417 17.1624 19.9285C17.6739 20.4399 18.3676 20.7273 19.0909 20.7273C19.8142 20.7273 20.5079 20.4399 21.0194 19.9285C21.5308 19.417 21.8182 18.7233 21.8182 18V7.63636C21.8182 7.34704 21.7032 7.06956 21.4987 6.86497C21.2941 6.66039 21.0166 6.54545 20.7273 6.54545ZM13.0909 9.81818C13.0938 9.95858 13.069 10.0982 13.0179 10.229C12.9669 10.3598 12.8905 10.4793 12.7933 10.5806C12.696 10.6819 12.5798 10.7631 12.4511 10.8194C12.3225 10.8758 12.184 10.9063 12.0436 10.9091H5.49818C5.35205 10.912 5.20678 10.8861 5.07067 10.8328C4.93456 10.7795 4.81027 10.7 4.70491 10.5987C4.59956 10.4974 4.51519 10.3763 4.45663 10.2424C4.39807 10.1085 4.36647 9.96432 4.36364 9.81818V6.54545C4.36364 6.25613 4.47857 5.97865 4.68316 5.77407C4.88774 5.56948 5.16522 5.45455 5.45455 5.45455H12C12.2893 5.45455 12.5668 5.56948 12.7714 5.77407C12.976 5.97865 13.0909 6.25613 13.0909 6.54545V9.81818Z" fill="white"/>
+    </svg>
+    <div id="altitude" class="gauge-container">
+        <span class="value-text" style="font-weight: 500; position: absolute; left: 36%; bottom: 27%">ALT</span>
+    </div>
+
     </body>
 
     <script type="text/javascript">
      var speed = Gauge(
          document.getElementById("speed"), {
-             max: 180,
+             max: 220,
              dialStartAngle: 90,
-             dialEndAngle: -25,
-             value: 0
+             dialEndAngle: -12,
+             value: 0,
+             label: function(label) {
+                 return label.toFixed(0);
+             }
          }
      );
+     // var rpm = Gauge(
+     //     document.getElementById("rpm"), {
+     //         max: 140,
+     //         dialStartAngle: 90,
+     //         dialEndAngle: -15,
+     //         value: 0,
+     //         showValue: false,
+     //     }
+     // )
+
+     var fuel = Gauge(
+         document.getElementById("fuel"), {
+             max: 100,
+             dialStartAngle: 130,
+             dialEndAngle: 50,
+             value: 0,
+             showValue: false
+         }
+     )
+     var altitude = Gauge(
+         document.getElementById("altitude"), {
+             max: 800,
+             dialStartAngle: 200,
+             dialEndAngle: 50,
+             value: 0,
+             label: function(label) {
+                 return label.toFixed(0)
+             }
+         }
+     )
+
 
      // speed.setValueAnimated(100, 2);
 
      window.addEventListener('message', function(event) {
-         console.log('received a message')
-          const data = event.data;
+         const data = event.data;
          data.useMetric = false;
          const useMetric = false;
 
          let rawRpm;
-         let gear;
          let speedString;
+         let gear;
+
+         if (event.data.action == 'hide') {
+             if (speed.getValue() !== 0) {
+                 // rpm.setValueAnimated(0,0)
+                 speed.setValueAnimated(0,0)
+             }
+             console.log(JSON.stringify(event.data))
+             document.getElementById('body').classList.add('hidden')
+         } else {
+             document.getElementById('body').classList.remove('hidden')
+             console.log(JSON.stringify(event.data))
+             if (!data.isAirborne) {
+                 // only do gears if we aren't airborne - doesnt really work for planes/helis
+                 if (data.gear != undefined) {
+                 gear = parseInt(data.gear);
+                 if (gear == 0 && data.speed != 0) {
+                     // zeroth gear and moving, must be in reverse
+                     document.getElementById('gear').innerText = 'R';
+                 } else if (data.speed == 0) {
+                     // zeroth gear and not moving, in Neutral
+                     document.getElementById('gear').innerText = 'N'
+                 } else {
+                     // not zeroth gear and moving - in gear.
+                     document.getElementById('gear').innerText  = gear
+                 }
+                 }
+                 document.getElementById('altitude').classList.add('hidden')
+             } else {
+                 document.getElementById('altitude').classList.remove('hidden')
+                 altitude.setValueAnimated(data.altitude.toFixed(0), .1)
+             }
+
 
          if (data.useMetric != undefined) {
              const useMetricNow = data.useMetric != false;
              if (useMetric != useMetricNow) {
                  useMetric = useMetricNow;
-                 UnitDisplay.innerText = useMetric ? 'KMH' : 'MPH';
+                 document.getElementById('unitOfSpeed').innerText = useMetric ? 'KMH' : 'MPH';
              }
          }
 
-         if (data.rawSpeed != undefined) {
+         if (data.speed != undefined) {
              var multiplier = useMetric ? 3.6 : 2.236936;
-             var unitSpeed = Math.floor(parseFloat(data.rawSpeed) * multiplier);
+             var unitSpeed = Math.floor(parseFloat(data.speed) * multiplier);
              speedString = unitSpeed.toString();
 
              speed.setValueAnimated(unitSpeed, .1)
          }
 
+
+
+             // if (data.rpm != undefined) {
+             //          rawRpm = parseFloat(data.rpm);
+             //          rpm.setValueAnimated((parseFloat(data.rpm) * 100.0).toFixed(2), 0.1)
+             // }
+
+             if (data.fuel) {
+                 fuel.setValueAnimated(parseFloat(data.fuel), 0.1)
+             }
+
+         // console.log(
+         //     JSON.stringify({
+         //         rpm: (parseFloat(data.rpm) * 100.0).toFixed(2),
+         //         gear,
+         //         speed: Math.floor(parseFloat(data.speed) * 2.236936),
+         //     }),
+         // );
+         }
      })
 
-         // if (data.gear != undefined) {
-         //   gear = parseInt(data.gear);
-         //   if (gear == 0) {
-         //     // GearNum.innerText = 'R';
-         //     // GearDisplay.classList.add('reverseGear');
-         //     // GearDisplay.classList.remove('normalGear');
-         //   } else {
-         //     // GearNum.innerText = gear;
-         //     // GearDisplay.classList.remove('reverseGear');
-         //     // GearDisplay.classList.add('normalGear');
-         //   }
-         // }
-         //
-         // if (data.rpm != undefined) {
-         //   rawRpm = parseFloat(data.rpm);
-         //   // RpmDisplay.style.width = `${(parseFloat(data.rpm) * 100.0).toFixed(2)}%`;
-         //   // GearDisplay.classList.toggle('rpmOverload', rawRpm * 9 > 7.5);
-         // }
-         //
-         // console.log(
-         //   JSON.stringify({
-         //     rpm: (parseFloat(data.rpm) * 100.0).toFixed(2),
-         //     gear,
-         //     speed: Math.floor(parseFloat(data.speed) * 2.236936),
-         //   }),
-         // );
-         //  })
-         //
     </script>
 
 </html>

@@ -1,6 +1,6 @@
 local player = PlayerPedId()
 
-CreateThread(function()
+Citizen.CreateThread(function()
     while true do
       print("starting loop")
       if IsPedInAnyVehicle(player, false) then

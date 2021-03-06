@@ -25,7 +25,7 @@ while true do
           gear = gear,
           speed = speed,
           fuel = fuel,
-          isAirborne = isAirborne
+          isAirborne = isAirborne,
           altitude = altitude
       }))
       Citizen.Wait(100)

@@ -72,4 +72,4 @@ const client = {
   },
 };
 
-module.exports = [client];
+module.exports = [client, server];

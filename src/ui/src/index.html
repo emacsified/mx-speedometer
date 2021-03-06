@@ -178,15 +178,15 @@
              value: 0
          }
      );
-     var rpm = Gauge(
-         document.getElementById("rpm"), {
-             max: 140,
-             dialStartAngle: 90,
-             dialEndAngle: -15,
-             value: 0,
-             showValue: false,
-         }
-     )
+     // var rpm = Gauge(
+     //     document.getElementById("rpm"), {
+     //         max: 140,
+     //         dialStartAngle: 90,
+     //         dialEndAngle: -15,
+     //         value: 0,
+     //         showValue: false,
+     //     }
+     // )
 
      var fuel = Gauge(
          document.getElementById("fuel"), {
@@ -203,6 +203,13 @@
              dialStartAngle: 130,
              dialEndAngle: 50,
              value: 0,
+             label: function(label) {
+                 if (label > 1200) {
+                     return '>1200';
+                 } else {
+                     return 1200;
+                 }
+             }
          }
      )
 
@@ -264,10 +271,10 @@
                  }
              }
 
-             if (data.rpm != undefined) {
-         rawRpm = parseFloat(data.rpm);
-         rpm.setValueAnimated((parseFloat(data.rpm) * 100.0).toFixed(2), 0.1)
-             }
+             // if (data.rpm != undefined) {
+             //          rawRpm = parseFloat(data.rpm);
+             //          rpm.setValueAnimated((parseFloat(data.rpm) * 100.0).toFixed(2), 0.1)
+             // }
 
              if (data.fuel) {
                  fuel.setValueAnimated(parseFloat(data.fuel), 0.1)

@@ -10,15 +10,13 @@ setInterval(() => {
       GetIsVehicleEngineRunning(currentVehicle)
     ) {
       // turn on speedo, send data.
-      const rpm = GetVehicleCurrentRpm(currentVehicle);
+      // const rpm = GetVehicleCurrentRpm(currentVehicle);
       const gear = GetVehicleCurrentGear(currentVehicle);
       const speed = GetEntitySpeed(currentVehicle);
       const fuel = GetVehicleFuelLevel(currentVehicle);
       const isAirborne = IsPedInAnyPlane(player) || IsPedInAnyHeli(player);
-      console.log('in plane?', IsPedInAnyPlane(player));
-      console.log('in heli?', IsPedInAnyHeli(player));
       const message = {
-        rpm,
+        // rpm,
         gear,
         speed,
         fuel,

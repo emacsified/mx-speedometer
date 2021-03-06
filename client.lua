@@ -1,15 +1,11 @@
 Citizen.CreateThread(function()
 local player = PlayerPedId()
-print("At least it ran slightly?")
 while true do
   Citizen.Wait(0)
-  print("starting loop")
   if IsPedInAnyVehicle(player, false) then
-    print("is in a vehicle")
     local vehicle = GetVehiclePedIsIn(player, false);
     -- If driving, and the engine is running
     if (GetPedInVehicleSeat(vehicle, -1) == player and GetIsVehicleEngineRunning(vehicle)) then
-      print("is driving")
       local gear = GetVehicleCurrentGear(vehicle)
       local speed = GetEntitySpeed(vehicle)
       local fuel = GetVehicleFuelLevel(vehicle)
@@ -30,7 +26,6 @@ while true do
       }))
       Citizen.Wait(100)
     else
-      print("in car, not driving")
       SendNuiMessage(json.encode({
           action = "hide"
       }))
@@ -38,7 +33,6 @@ while true do
     end
   else
     SendNuiMessage(json.encode({type = "UIState", action = "hide"}))
-    print("not in a car")
     Citizen.Wait(500)
   end
   

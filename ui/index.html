@@ -228,11 +228,9 @@
                  // rpm.setValueAnimated(0,0)
                  speed.setValueAnimated(0,0)
              }
-             console.log(JSON.stringify(event.data))
              document.getElementById('body').classList.add('hidden')
          } else {
              document.getElementById('body').classList.remove('hidden')
-             console.log(JSON.stringify(event.data))
              if (!data.isAirborne) {
                  // only do gears if we aren't airborne - doesnt really work for planes/helis
                  if (data.gear != undefined) {

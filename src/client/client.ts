@@ -14,7 +14,7 @@ setInterval(() => {
       const gear = GetVehicleCurrentGear(currentVehicle);
       const speed = GetEntitySpeed(currentVehicle);
       const fuel = GetVehicleFuelLevel(currentVehicle);
-      const isAirborne = IsPedInAnyPlane(player);
+      const isAirborne = IsPedInAnyPlane(player) || IsPedInAnyHeli(player);
       const message = {
         rpm,
         gear,

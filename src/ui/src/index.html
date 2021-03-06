@@ -176,6 +176,9 @@
              dialStartAngle: 90,
              dialEndAngle: -15,
              value: 0
+             label: function(label) {
+                 return label;
+             }
          }
      );
      // var rpm = Gauge(
@@ -199,7 +202,7 @@
      )
      var altitude = Gauge(
          document.getElementById("altitude"), {
-             max: 2500,
+             max: 1200,
              dialStartAngle: 130,
              dialEndAngle: 50,
              value: 0,

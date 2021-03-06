@@ -31,3 +31,7 @@ setInterval(() => {
     SendNuiMessage(JSON.stringify({ type: 'UISTate', action: 'hide' }));
   }
 }, 100);
+
+onNet('mx-speedometer:load', () => {
+  SendNuiMessage(JSON.stringify({ type: UIState, action: 'show' }));
+});

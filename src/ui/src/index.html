@@ -219,11 +219,16 @@
          data.useMetric = false;
          const useMetric = false;
 
+         let rawRpm;
+         let speedString;
+         let gear;
+
          if (event.data.action == 'hide') {
              if (speed.getValue() !== 0) {
                  // rpm.setValueAnimated(0,0)
                  speed.setValueAnimated(0,0)
              }
+             console.log(JSON.stringify(event.data))
              document.getElementById('body').classList.add('hidden')
          } else {
              document.getElementById('body').classList.remove('hidden')
@@ -249,9 +254,6 @@
                  altitude.setValueAnimated(data.altitude.toFixed(0), .1)
              }
 
-         let rawRpm;
-         let gear;
-         let speedString;
 
          if (data.useMetric != undefined) {
              const useMetricNow = data.useMetric != false;

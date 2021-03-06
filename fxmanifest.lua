@@ -7,9 +7,9 @@ author 'Ash McBride (emacsified)'
 
 client_script 'client.lua'
 
-ui_page "ui/index.html"
+ui_page("ui/index.html")
 
-files {
+files ({
   'ui/index.html',
   'ui/gauge.js'
-}
+})

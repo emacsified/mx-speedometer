@@ -15,6 +15,8 @@ setInterval(() => {
       const speed = GetEntitySpeed(currentVehicle);
       const fuel = GetVehicleFuelLevel(currentVehicle);
       const isAirborne = IsPedInAnyPlane(player) || IsPedInAnyHeli(player);
+      console.log('in plane?', IsPedInAnyPlane(player));
+      console.log('in heli?', IsPedInAnyHeli(player));
       const message = {
         rpm,
         gear,

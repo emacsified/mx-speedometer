@@ -219,6 +219,8 @@
      // speed.setValueAnimated(100, 2);
 
      window.addEventListener('message', function(event) {
+         console.log('got data')
+         console.log(event.data)
          const data = event.data;
          data.useMetric = false;
          const useMetric = false;

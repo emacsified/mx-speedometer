@@ -8,23 +8,19 @@ AddEventHandler(
                 while true do
                     Citizen.Wait(0)
                     if IsPedInAnyVehicle(player, false) then
-                        print("is in vehicle")
                         local vehicle = GetVehiclePedIsIn(player, false)
                         -- If driving, and the engine is running
                         if (GetPedInVehicleSeat(vehicle, -1) == player and GetIsVehicleEngineRunning(vehicle)) then
-                            print("engine on, is driving")
                             local gear = GetVehicleCurrentGear(vehicle)
                             local speed = GetEntitySpeed(vehicle)
                             local fuel = GetVehicleFuelLevel(vehicle)
                             local isAirborne = IsPedInAnyPlane(player) or IsPedInAnyHeli(player)
                             local altitude
                             if isAirborne then
-                                print("is airborne")
                                 altitude = GetEntityHeightAboveGround(vehicle)
                             else
                                 altitude = nil
                             end
-                            print("sending message")
                             SendNUIMessage(
                                 json.encode(
                                     {

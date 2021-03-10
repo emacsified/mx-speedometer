@@ -140,8 +140,8 @@
              position: absolute;
              bottom: 0%;
              left: 60%;
-             height: 2vw;
-             width: 2vw;
+             height: 3.5vw;
+             width: 3.5vw;
              max-height: 40x;
              max-width: 40px;
 
@@ -236,12 +236,14 @@
          let gear;
 
          if (event.data.action == 'hide') {
+             console.log('hide!')
              if (speed.getValue() !== 0) {
                  // rpm.setValueAnimated(0,0)
                  speed.setValueAnimated(0,0)
              }
              $('#body').hide()
          } else {
+             console.log('show!')
              $('#body').show()
              if (!data.isAirborne) {
                  // only do gears if we aren't airborne - doesnt really work for planes/helis

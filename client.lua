@@ -21,7 +21,7 @@ AddEventHandler(
                             else
                                 altitude = nil
                             end
-                            SendNUIMessage(
+                            SendNuiMessage(
                                 json.encode(
                                     {
                                         action = "show",
@@ -35,7 +35,7 @@ AddEventHandler(
                             )
                             Citizen.Wait(100)
                         else
-                            SendNUIMessage(
+                            SendNuiMessage(
                                 json.encode(
                                     {
                                         action = "hide"
@@ -45,7 +45,7 @@ AddEventHandler(
                             Citizen.Wait(500)
                         end
                     else
-                        SendNUIMessage(json.encode({type = "UIState", action = "hide"}))
+                        SendNuiMessage(json.encode({type = "UIState", action = "hide"}))
                         Citizen.Wait(500)
                     end
                 end

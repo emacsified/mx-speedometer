@@ -178,7 +178,6 @@
 
     <script type="text/javascript">
      $('#body').hide()
-     $('#body').removeClass('hidden')
      var speed = Gauge(
          document.getElementById("speed"), {
              max: 220,
@@ -186,7 +185,11 @@
              dialEndAngle: -12,
              value: 0,
              label: function(label) {
-                 return label.toFixed(0);
+                 if (label > 220) {
+                     return ">220"
+                 } else {
+                     return label.toFixed(0);
+                 }
              }
          }
      );
@@ -216,7 +219,11 @@
              dialEndAngle: 50,
              value: 0,
              label: function(label) {
-                 return label.toFixed(0)
+                 if (label > 800) {
+                     return ">800"
+                 } else {
+                     return label.toFixed(0)
+                 }
              }
          }
      )

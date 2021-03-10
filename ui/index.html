@@ -138,8 +138,8 @@
              position: absolute;
              bottom: 0%;
              left: 60%;
-             height: 80px;
-             width: 80px;
+             height: 2vw;
+             width: 2vw;
 
          }
 
@@ -147,8 +147,8 @@
              position: absolute;
              left: 89%;
              bottom: 4%;
-             width: 100px;
-             height: 100px;
+             width: 5vw;
+             height: 5vw;
          }
 
         </style>
@@ -250,9 +250,9 @@
                      document.getElementById('gear').innerText  = gear
                  }
                  }
-                 $('#altitude').hide()
+                 // $('#altitude').hide()
              } else {
-                 $('#altitude').show()
+                 // $('#altitude').show()
                  altitude.setValueAnimated(data.altitude.toFixed(0), .1)
              }
 

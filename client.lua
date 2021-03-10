@@ -3,9 +3,11 @@ AddEventHandler(
     function()
         Citizen.CreateThread(
             function()
+                print("thread created")
                 local player = PlayerPedId()
-                Citizen.Wait(1000)
+                Citizen.Wait(0)
                 while true do
+                    print("in loop")
                     Citizen.Wait(0)
                     if IsPedInAnyVehicle(player, false) then
                         print("In a vehicle")

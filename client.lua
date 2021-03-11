@@ -1,8 +1,8 @@
         Citizen.CreateThread(
             function()
-                local player = PlayerPedId()
                 Citizen.Wait(0)
                 while true do
+                    local player = PlayerPedId()
                     Citizen.Wait(100)
                     if IsPedInAnyVehicle(player, false) then
                         local vehicle = GetVehiclePedIsIn(player, false)

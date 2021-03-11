@@ -5,7 +5,7 @@
                 Citizen.Wait(0)
                 while true do
                     print("in loop")
-                    Citizen.Wait(0)
+                    Citizen.Wait(100)
                     if IsPedInAnyVehicle(player, false) then
                         print("In a vehicle")
                         local vehicle = GetVehiclePedIsIn(player, false)
@@ -37,7 +37,6 @@
                                     }
                                 )
                             )
-                            Citizen.Wait(100)
                         else
                             print("sending NUI Message - hide")
                             SendNUIMessage(

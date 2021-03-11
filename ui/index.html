@@ -242,7 +242,6 @@
      window.addEventListener('message', function(event) {
          const data = JSON.parse(event.data)
 
-             console.log(typeof data)
          data.useMetric = false;
          const useMetric = false;
 
@@ -251,14 +250,12 @@
          let gear;
 
          if (data.action == 'hide') {
-             console.log('hide!')
              if (speed.getValue() !== 0) {
                  // rpm.setValueAnimated(0,0)
                  speed.setValueAnimated(0,0)
              }
              $('#body').hide()
          } else {
-             console.log('show!')
              $('#body').show()
              if (!data.isAirborne) {
                  // only do gears if we aren't airborne - doesnt really work for planes/helis
@@ -279,7 +276,6 @@
                  $('#altitude').hide()
              } else {
                  $('#altitude').show()
-                 console.log('setting altitude: ', data.altitude)
                  altitude.setValueAnimated(data.altitude.toFixed(0), .1)
              }
 
@@ -291,12 +287,10 @@
                  document.getElementById('unitOfSpeed').innerText = useMetric ? 'KMH' : 'MPH';
              }
          }
-             console.log('speed:', data.speed)
              if (data.speed != undefined) {
              var multiplier = useMetric ? 3.6 : 2.236936;
              var unitSpeed = Math.floor(parseFloat(data.speed) * multiplier);
              speedString = unitSpeed.toString();
-                 console.log('setting speed: ', speedString)
              speed.setValueAnimated(unitSpeed, .1)
          }
 
@@ -308,7 +302,6 @@
              // }
 
              if (data.fuel) {
-                 console.log('setting fuel: ', data.fuel)
                  fuel.setValueAnimated(parseFloat(data.fuel), 0.1)
              }
 

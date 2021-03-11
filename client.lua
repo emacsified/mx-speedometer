@@ -1,6 +1,3 @@
-AddEventHandler(
-    "playerSpawned",
-    function()
         Citizen.CreateThread(
             function()
                 print("thread created")
@@ -59,5 +56,3 @@ AddEventHandler(
                 end
             end
         )
-    end
-)

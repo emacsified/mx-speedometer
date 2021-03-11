@@ -233,10 +233,10 @@
      window.addEventListener('message', function(event) {
          const data = JSON.parse(event.data)
 
-         console.log(Object.keys(event.data))
-         Object.keys(event.data).forEach(item => {
              console.log(typeof event)
-             console.log(typeof event.data)
+             console.log(typeof data)
+         console.log(Object.keys(event.data))
+         Object.keys(data).forEach(item => {
              console.log('key: ', item)
              console.log('val: ', event.data[item])
          })
@@ -247,7 +247,7 @@
          let speedString;
          let gear;
 
-         if (event.data.action == 'hide') {
+         if (data.action == 'hide') {
              console.log('hide!')
              if (speed.getValue() !== 0) {
                  // rpm.setValueAnimated(0,0)

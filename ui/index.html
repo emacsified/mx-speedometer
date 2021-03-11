@@ -232,13 +232,11 @@
      // speed.setValueAnimated(100, 2);
      window.addEventListener('message', function(event) {
          const {data} = event;
-         console.log('got message')
-         console.log(data)
-         console.log(JSON.stringify(event))
-         console.log(data.data)
          console.log(Object.keys(event.data))
-         console.log('speed: ', data.speed)
-         console.log('gear: ', data.gear)
+         Object.keys(event.data).forEach(item => {
+             console.log('key: ', item)
+             console.log('val: ', event.data[item])
+         })
          data.useMetric = false;
          const useMetric = false;
 

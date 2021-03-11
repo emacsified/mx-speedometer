@@ -278,7 +278,7 @@
 
 
              if (data.speed != undefined) {
-             var multiplier = useMetric ? 3.6 : 2.236936;
+             var multiplier = 2.236936; // metres -> mph
              var unitSpeed = Math.floor(parseFloat(data.speed) * multiplier);
              speedString = unitSpeed.toString();
              speed.setValueAnimated(unitSpeed, .1)

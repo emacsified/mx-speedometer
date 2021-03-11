@@ -235,6 +235,8 @@
          const data = event.data;
          console.log('got message')
          console.log(data)
+         console.log(JSON.stringify(event))
+         console.log(data.data)
          console.log('speed: ', data.speed)
          console.log('gear: ', data.gear)
          data.useMetric = false;

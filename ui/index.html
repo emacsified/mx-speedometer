@@ -234,6 +234,8 @@
          const {data} = event;
          console.log(Object.keys(event.data))
          Object.keys(event.data).forEach(item => {
+             console.log(typeof event)
+             console.log(typeof event.data)
              console.log('key: ', item)
              console.log('val: ', event.data[item])
          })

@@ -277,9 +277,9 @@
                      document.getElementById('gear').innerText  = gear
                  }
                  }
-                 // $('#altitude').hide()
+                 $('#altitude').hide()
              } else {
-                 // $('#altitude').show()
+                 $('#altitude').show()
                  console.log('setting altitude: ', data.altitude)
                  altitude.setValueAnimated(data.altitude.toFixed(0), .1)
              }

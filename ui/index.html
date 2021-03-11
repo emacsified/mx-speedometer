@@ -231,7 +231,8 @@
 
      // speed.setValueAnimated(100, 2);
      window.addEventListener('message', function(event) {
-         const {data} = event;
+         const data = JSON.parse(event.data)
+
          console.log(Object.keys(event.data))
          Object.keys(event.data).forEach(item => {
              console.log(typeof event)

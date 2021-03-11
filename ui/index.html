@@ -230,13 +230,13 @@
 
 
      // speed.setValueAnimated(100, 2);
-     let data
      window.addEventListener('message', function(event) {
-         data = event.data;
+         const {data} = event;
          console.log('got message')
          console.log(data)
          console.log(JSON.stringify(event))
          console.log(data.data)
+         console.log(Object.keys(event.data))
          console.log('speed: ', data.speed)
          console.log('gear: ', data.gear)
          data.useMetric = false;

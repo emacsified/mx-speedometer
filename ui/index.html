@@ -27,8 +27,8 @@
 
          .fuel-tank {
              position: absolute;
-             bottom: 36%;
-             right: -5%;
+             bottom: 34%;
+             right: -10%;
          }
 
          /* ------ Default Style ---------- */
@@ -128,7 +128,7 @@
          #gear {
              color: white;
              position: absolute;
-             bottom: 12%;
+             bottom: 15%;
              font-size: .7rem;
              left:  55%;
              font-family: sans-serif;
@@ -137,8 +137,8 @@
 
          #fuel {
              position: absolute;
-             bottom: 15%;
-             left: 70%;
+             bottom: 0%;
+             left: 60%;
              height: 3.5vw;
              width: 3.5vw;
              max-height: 50px;
@@ -241,26 +241,24 @@
      // speed.setValueAnimated(100, 2);
      window.addEventListener('message', function(event) {
          const data = JSON.parse(event.data)
+         console.log(data)
 
-         data.useMetric = false;
-         const useMetric = false;
 
          let rawRpm;
          let speedString;
          let gear;
 
          if (data.action == 'hide') {
+             $('#body').hide()
              if (speed.getValue() !== 0) {
-                 // rpm.setValueAnimated(0,0)
                  speed.setValueAnimated(0,0)
              }
-             $('#body').hide()
          } else {
              $('#body').show()
              if (!data.isAirborne) {
                  // only do gears if we aren't airborne - doesnt really work for planes/helis
                  if (data.gear != undefined) {
-                 gear = parseInt(data.gear);
+                     gear = parseInt(data.gear);
                  if (gear == 0 && data.speed != 0) {
                      // zeroth gear and moving, must be in reverse
                      document.getElementById('gear').innerText = 'R';
@@ -279,13 +277,6 @@
              }
 
 
-         if (data.useMetric != undefined) {
-             const useMetricNow = data.useMetric != false;
-             if (useMetric != useMetricNow) {
-                 useMetric = useMetricNow;
-                 document.getElementById('unitOfSpeed').innerText = useMetric ? 'KMH' : 'MPH';
-             }
-         }
              if (data.speed != undefined) {
              var multiplier = useMetric ? 3.6 : 2.236936;
              var unitSpeed = Math.floor(parseFloat(data.speed) * multiplier);
@@ -304,13 +295,6 @@
                  fuel.setValueAnimated(parseFloat(data.fuel), 0.1)
              }
 
-         // console.log(
-         //     JSON.stringify({
-         //         rpm: (parseFloat(data.rpm) * 100.0).toFixed(2),
-         //         gear,
-         //         speed: Math.floor(parseFloat(data.speed) * 2.236936),
-         //     }),
-         // );
          }
      })
 

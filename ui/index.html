@@ -255,6 +255,7 @@
              if (!data.isAirborne) {
                  // only do gears if we aren't airborne - doesnt really work for planes/helis
                  if (data.gear != undefined) {
+                     console.log('setting gear: ', data.gear)
                  gear = parseInt(data.gear);
                  if (gear == 0 && data.speed != 0) {
                      // zeroth gear and moving, must be in reverse

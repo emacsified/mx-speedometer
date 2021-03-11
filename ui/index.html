@@ -232,14 +232,7 @@
      // speed.setValueAnimated(100, 2);
 
      window.addEventListener('message', function(event) {
-         const data = event.data;
-         console.log('got message')
-         console.log(data)
-         console.log(JSON.stringify(event))
-         console.log(data.data)
-         console.log('speed: ', data.speed)
-         console.log('gear: ', data.gear)
-         data.useMetric = false;
+         event.data.useMetric = false;
          const useMetric = false;
 
          let rawRpm;
@@ -256,15 +249,14 @@
          } else {
              console.log('show!')
              $('#body').show()
-             if (!data.isAirborne) {
+             if (!event.data.isAirborne) {
                  // only do gears if we aren't airborne - doesnt really work for planes/helis
-                 if (data.gear != undefined) {
-                     console.log('setting gear: ', data.gear)
-                 gear = parseInt(data.gear);
-                 if (gear == 0 && data.speed != 0) {
+                 if (event.data.gear != undefined) {
+                 gear = parseInt(event.data.gear);
+                 if (gear == 0 && event.data.speed != 0) {
                      // zeroth gear and moving, must be in reverse
                      document.getElementById('gear').innerText = 'R';
-                 } else if (data.speed == 0) {
+                 } else if (event.data.speed == 0) {
                      // zeroth gear and not moving, in Neutral
                      document.getElementById('gear').innerText = 'N'
                  } else {
@@ -275,24 +267,21 @@
                  // $('#altitude').hide()
              } else {
                  // $('#altitude').show()
-                 console.log('setting altitude: ', data.altitude)
-                 altitude.setValueAnimated(data.altitude.toFixed(0), .1)
+                 altitude.setValueAnimated(event.data.altitude.toFixed(0), .1)
              }
 
 
-         if (data.useMetric != undefined) {
+         if (event.data.useMetric != undefined) {
              const useMetricNow = data.useMetric != false;
              if (useMetric != useMetricNow) {
                  useMetric = useMetricNow;
                  document.getElementById('unitOfSpeed').innerText = useMetric ? 'KMH' : 'MPH';
              }
          }
-             console.log('speed:', data.speed)
-             if (data.speed != undefined) {
+             if (event.data.speed != undefined) {
              var multiplier = useMetric ? 3.6 : 2.236936;
-             var unitSpeed = Math.floor(parseFloat(data.speed) * multiplier);
+             var unitSpeed = Math.floor(parseFloat(event.data.speed) * multiplier);
              speedString = unitSpeed.toString();
-                 console.log('setting speed: ', speedString)
              speed.setValueAnimated(unitSpeed, .1)
          }
 
@@ -303,9 +292,8 @@
              //          rpm.setValueAnimated((parseFloat(data.rpm) * 100.0).toFixed(2), 0.1)
              // }
 
-             if (data.fuel) {
-                 console.log('setting fuel: ', data.fuel)
-                 fuel.setValueAnimated(parseFloat(data.fuel), 0.1)
+             if (event.data.fuel) {
+                 fuel.setValueAnimated(parseFloat(event.data.fuel), 0.1)
              }
 
          // console.log(

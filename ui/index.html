@@ -283,7 +283,7 @@
                  document.getElementById('unitOfSpeed').innerText = useMetric ? 'KMH' : 'MPH';
              }
          }
-
+             console.log('speed:', data.speed)
              if (data.speed != undefined) {
              var multiplier = useMetric ? 3.6 : 2.236936;
              var unitSpeed = Math.floor(parseFloat(data.speed) * multiplier);

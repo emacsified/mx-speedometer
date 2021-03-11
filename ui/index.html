@@ -129,7 +129,7 @@
              color: white;
              position: absolute;
              bottom: 12%;
-             font-size: 1.4rem;
+             font-size: .7rem;
              left:  55%;
              font-family: sans-serif;
              font-weight: 900;
@@ -243,13 +243,7 @@
      window.addEventListener('message', function(event) {
          const data = JSON.parse(event.data)
 
-             console.log(typeof event)
              console.log(typeof data)
-         console.log(Object.keys(event.data))
-         Object.keys(data).forEach(item => {
-             console.log('key: ', item)
-             console.log('val: ', event.data[item])
-         })
          data.useMetric = false;
          const useMetric = false;
 

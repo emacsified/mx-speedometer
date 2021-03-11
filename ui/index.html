@@ -270,6 +270,7 @@
                  // $('#altitude').hide()
              } else {
                  // $('#altitude').show()
+                 console.log('setting altitude: ', data.altitude)
                  altitude.setValueAnimated(data.altitude.toFixed(0), .1)
              }
 
@@ -282,11 +283,11 @@
              }
          }
 
-         if (data.speed != undefined) {
+             if (data.speed != undefined) {
              var multiplier = useMetric ? 3.6 : 2.236936;
              var unitSpeed = Math.floor(parseFloat(data.speed) * multiplier);
              speedString = unitSpeed.toString();
-
+                 console.log('setting speed: ', speedString)
              speed.setValueAnimated(unitSpeed, .1)
          }
 
@@ -298,6 +299,7 @@
              // }
 
              if (data.fuel) {
+                 console.log('setting fuel: ', data.fuel)
                  fuel.setValueAnimated(parseFloat(data.fuel), 0.1)
              }
 
